@@ -1,0 +1,8 @@
+node_modules\
+build\
+node_modules\@aashutoshrathi
+node_modules
+backend\app\__pycache__\generate.cpython-311.pyc
+backend\app\__pycache__\**
+backend/app/__pycache__/__init__.cpython-311.pyc
+backend/app/__pycache__/generate.cpython-311.pyc
