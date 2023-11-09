@@ -6,17 +6,20 @@ from fastapi.responses import StreamingResponse, JSONResponse
 app = FastAPI()
 import base64
 
+
 #origins = ["http://localhost:3000", "http://127.0.0.1:3000" ]
 
 
-# CORS politikalarını ayarlamak için middleware kullanın (Güvenlik nedeniyle geliştirme sırasında kullanabilirsiniz).
+#CORS politikalarını ayarlamak için middleware kullanın (Güvenlik nedeniyle geliştirme sırasında kullanabilirsiniz).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000", "http://0.0.0.0:8000/generate"],  # Daha güvenli bir ayar yapmalısınız.
+    allow_origins=["http://127.0.0.1:3000", "http://0.0.0.0:8000/generate", "http://35.219.168.26:1780"],  # Daha güvenli bir ayar yapmalısınız.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 
@@ -65,3 +68,7 @@ async def predict(image: UploadFile = File(...), prompt:str = Form(...), color: 
     filtered_image.seek(0)
 
     return StreamingResponse(content=filtered_image, media_type="image/png")
+
+
+
+
