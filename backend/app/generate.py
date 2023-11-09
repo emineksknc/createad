@@ -43,7 +43,13 @@ def call_stable_diffusion(image, prompt):
 def generate_image(image, prompt:str, color:str):
     color_name = convert_rgb_to_names(hex_to_rgb(color))
     init_image = image
-    init_image = init_image.resize((768, 512))
+    print(image.size)
+    if image.size == (768, 512):
+        init_image = init_image
+    else:
+        init_image = init_image.resize((224, 224))
+
+    #init_image = init_image.resize((200, 200))
     prompt = f"Use {color_name} " + prompt
     new_image = call_stable_diffusion(init_image, prompt)
     torch.cuda.empty_cache()
